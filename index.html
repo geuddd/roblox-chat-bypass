@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox Chat Bypass</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+  }
+
+  #input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  #output {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    min-height: 100px;
+    margin-bottom: 10px;
+  }
+
+  #copyBtn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  #copyBtn:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <textarea id="input" placeholder="Type here..."></textarea><br>
+  <div id="output"></div>
+  <button id="copyBtn">Copy</button>
+  <div id="copyFeedback"></div>
+</div>
+
+<script>
+const translations = {
+  "i": "і",
+  "e": "е",
+  "g": "g",
+  "c": "с",
+  "o": "о",
+  "p": "р",
+  "s": "ѕ",
+  "u": "u",
+  "I": "Ӏ",
+  "E": "Е",
+  "G": "ꓖ",
+  "C": "С",
+  "O": "О",
+  "P": "Р",
+  "S": "Ѕ",
+  "U": "𐓎",
+  " ": ""
+};
+
+document.getElementById("input").addEventListener("input", function() {
+  const inputText = this.value;
+  let outputText = "FAG￰"; // Prepend "FAG￰"
+  for (let i = 0; i < inputText.length; i++) {
+    const char = inputText[i];
+    if (translations[char] !== undefined) {
+      outputText += translations[char];
+    } else {
+      outputText += char;
+    }
+  }
+  outputText += " ိ"; // Append " ိ"
+  document.getElementById("output").textContent = outputText;
+});
+
+document.getElementById("copyBtn").addEventListener("click", function() {
+  const outputText = document.getElementById("output").textContent;
+  navigator.clipboard.writeText(outputText)
+    .then(() => {
+      document.getElementById("copyFeedback").textContent = "Copied to clipboard";
+      setTimeout(() => {
+        document.getElementById("copyFeedback").textContent = "";
+      }, 2000);
+    })
+    .catch(err => console.error('Failed to copy: ', err));
+});
+</script>
+
+</body>
+</html>
