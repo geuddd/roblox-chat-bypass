@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roblox Chat Bypass</title>
+<title>Translator</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -92,8 +92,9 @@ const translations = {
 document.getElementById("input").addEventListener("input", function() {
   const inputText = this.value;
   let outputText = "FAG￰"; // Prepend "FAG￰"
-  for (let i = 0; i < inputText.length; i++) {
-    const char = inputText[i];
+  const replacedText = inputText.replace(/fuck/g, "fu⁥сk");
+  for (let i = 0; i < replacedText.length; i++) {
+    const char = replacedText[i];
     if (translations[char] !== undefined) {
       outputText += translations[char];
     } else {
